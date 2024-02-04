@@ -6,5 +6,6 @@ namespace AzureBlobStorage.Services
 	{
 		Task Upload(FileModel fileModel);
 		Task<Stream> Get(String name);
+		Task Delete(String name);
 	}
 }

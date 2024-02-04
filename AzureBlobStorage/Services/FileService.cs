@@ -40,6 +40,20 @@ namespace AzureBlobStorage.Services
 
 		}
 
-    }
+		public async Task Delete(String name)
+        {
+			//create container instance
+			var containerInstance = _blobServiceClient.GetBlobContainerClient("products");
+
+            //create blob instance
+            var blobInstance = containerInstance.GetBlobClient(name);
+
+            await blobInstance.DeleteAsync();
+
+
+		}
+
+
+	}
 
 }

@@ -29,8 +29,8 @@ namespace AzureBlobStorage.Controllers
 		[Route("get")]
 		public async Task<IActionResult> Get(String name)
 		{
-			var imageFileStream= await _fileService.Get(name);
-			string fileType ="jpeg";
+			var imageFileStream = await _fileService.Get(name);
+			string fileType = "jpeg";
 
 			if (name.Contains("png"))
 			{
@@ -55,6 +55,16 @@ namespace AzureBlobStorage.Controllers
 			return File(imageFileStream, $"image/{fileType}", $"blobfile.{fileType}");
 		}
 
+		[HttpDelete]
+		[Route("delete")]
+		public async Task<IActionResult> DeleteFile(String name)
+		{
+		
+			await _fileService.Delete(name);
+
+			return Ok(name);
+
+		}
 
 	}
 }
